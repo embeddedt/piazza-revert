@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Piazza Revert
 // @namespace    https://github.com/embeddedt
-// @version      0.2
+// @version      0.3
 // @description  Revert Piazza to the old user interface
 // @author       embeddedt
 // @match        https://piazza.com/*
@@ -273,7 +273,6 @@
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
             box-shadow: 0 1px 4px rgba(0,0,0,.15);
-            clip-path: inset(-4px -4px 0px -4px);
             border: 1px solid var(--qa-section-border-color);
             padding: 0.5rem 1rem !important;
             margin: 0 0.5rem;
