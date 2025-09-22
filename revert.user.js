@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Piazza Revert
 // @namespace    https://github.com/embeddedt
-// @version      0.3
+// @version      0.4
 // @description  Revert Piazza to the old user interface
 // @author       embeddedt
 // @match        https://piazza.com/*
@@ -324,10 +324,13 @@
         article.answer > footer, .main-content .questions-and-answers #qanda-content .post-footer {
             padding-top: 0.25rem;
             padding-bottom: 0.25rem;
-            height: 2.25rem;
             background-color: var(--qa-footer-background-color);
             border-bottom-left-radius: 5px;
             border-bottom-right-radius: 5px;
+            /* fix the instructor edit submit panel getting cutoff */
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            margin-bottom: 0 !important;
         }
 
         article.answer > footer > div > div.pl-4 {
