@@ -259,7 +259,7 @@ function injectImageHover() {
                     previewEl = null;
                 }
             }, { once: true });
-        }, 400); // delay in ms
+        }, userscriptSettings.get("hoverPreviewDelay")); // delay in ms
     });
 
     document.addEventListener("mouseout", e => {
