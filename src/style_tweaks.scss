@@ -314,3 +314,7 @@ article.followup_container .followup .followup_content_wrapper > .border-left {
 body .render-html-content img, img.pswp__img {
     background-color: white;
 }
+
+html[data-darkreader-scheme="dark"] #react_root .folder_selector .folder_button {
+    background-color: #2F363C;
+}
