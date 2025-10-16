@@ -3,6 +3,7 @@ import photoswipeCss from 'photoswipe/style.css';
 import PhotoSwipe from 'photoswipe';
 import { userscriptSettings } from './utils/settings';
 import './heic/heic_converter';
+import './patches/tinymce';
 
 console.log("Bootstrapped Piazza Revert");
 
