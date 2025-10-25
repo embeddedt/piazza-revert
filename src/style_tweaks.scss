@@ -271,6 +271,7 @@ article.followup_container .followup .followup_content_wrapper > .border-left {
         max-width: 90vw;
         max-height: 80vh;
         overflow-y: auto;
+        color: #333;
     }
     .us-settings-dialog h2 {
         margin-top: 0;
@@ -299,6 +300,8 @@ article.followup_container .followup .followup_content_wrapper > .border-left {
         border: 1px solid #888;
         background: #f0f0f0;
         cursor: pointer;
+        appearance: none;
+        color: #333;
     }
 
 .us-feature-smallerImagesInPosts {
@@ -317,4 +320,9 @@ body .render-html-content img, img.pswp__img {
 
 html[data-darkreader-scheme="dark"] #react_root .folder_selector .folder_button {
     background-color: #2F363C;
+}
+
+/* fix the dropdowns having excessively bright background colors */
+html[data-darkreader-scheme="dark"] .dropdown .dropdown-menu .dropdown-item:hover {
+    background: #223;
 }
