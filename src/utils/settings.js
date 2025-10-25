@@ -147,6 +147,6 @@ userscriptSettings.addSetting({ key: "smallerImagesInPosts", label: "Smaller Ima
 userscriptSettings.addSetting({ key: "enableHoverPreview", label: "Enable Image Hover Preview", defaultValue: true });
 userscriptSettings.addSetting({ key: "hoverPreviewDelay", label: "Hover Preview Delay (ms)", type: "number", defaultValue: 400 });
 userscriptSettings.addSetting({ key: "enableFancyGallery", label: "Enable Image Enlarge on Click", defaultValue: true });
-userscriptSettings.addSetting({ key: "heicImageDecoding", label: "Auto-Convert HEIC Images", defaultValue: true });
+userscriptSettings.addSetting({ key: "heicImageDecoding", label: "Auto-Convert Image Links", defaultValue: true });
 
 export { userscriptSettings };
