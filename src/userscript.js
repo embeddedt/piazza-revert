@@ -209,10 +209,21 @@ function injectImageHover() {
     if (!userscriptSettings.get("enableHoverPreview")) {
         return;
     }
+    /** @type {HTMLDivElement} */
     let previewEl;
     let hoverTimer;
     let lastMouseX = 0;
     let lastMouseY = 0;
+
+    function updatePreviewPosition() {
+        const previewRect = previewEl.getBoundingClientRect();
+        let desiredX = lastMouseX + 20;
+        let desiredY = lastMouseY + 20;
+        desiredX = Math.max(0, Math.min(desiredX, document.body.clientWidth - previewRect.width));
+        desiredY = Math.max(0, Math.min(desiredY, document.body.clientHeight - previewRect.height));
+        // Place preview at last known mouse coordinates
+        previewEl.style.transform = `translate(${desiredX}px, ${desiredY}px)`;
+    }
 
     document.addEventListener("mousemove", e => {
         // Always update last known mouse position
@@ -220,8 +231,7 @@ function injectImageHover() {
         lastMouseY = e.clientY;
 
         if (previewEl) {
-            previewEl.style.top = lastMouseY + 20 + "px";
-            previewEl.style.left = lastMouseX + 20 + "px";
+            updatePreviewPosition();
         }
     });
 
@@ -232,26 +242,15 @@ function injectImageHover() {
         // Start delay timer
         hoverTimer = setTimeout(() => {
             previewEl = document.createElement("div");
-            previewEl.style.position = "absolute";
-            previewEl.style.zIndex = "9999";
-            previewEl.style.border = "1px solid #ccc";
-            previewEl.style.background = "#fff";
-            previewEl.style.padding = "4px";
-            previewEl.style.boxShadow = "0 4px 12px rgba(0,0,0,0.2)";
-            previewEl.style.borderRadius = "6px";
+            previewEl.classList.add("us-image-hover-preview-container");
 
             const bigImg = document.createElement("img");
             bigImg.src = img.src;
-            bigImg.style.maxWidth = "500px";
-            bigImg.style.maxHeight = "500px";
-            bigImg.style.display = "block";
 
             previewEl.appendChild(bigImg);
             document.body.appendChild(previewEl);
 
-            // Place preview at last known mouse coordinates
-            previewEl.style.top = lastMouseY + 20 + "px";
-            previewEl.style.left = lastMouseX + 20 + "px";
+            updatePreviewPosition();
 
             img.addEventListener("mouseout", () => {
                 clearTimeout(hoverTimer);

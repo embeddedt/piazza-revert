@@ -326,3 +326,23 @@ html[data-darkreader-scheme="dark"] #react_root .folder_selector .folder_button 
 html[data-darkreader-scheme="dark"] .dropdown .dropdown-menu .dropdown-item:hover {
     background: #223;
 }
+
+.us-image-hover-preview-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(0px, 0px);
+    z-index: 9999;
+    border: 1px solid #ccc;
+    background: #fff;
+    padding: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    pointer-events: none;
+}
+
+.us-image-hover-preview-container > img {
+    max-width: 500px;
+    max-height: 500px;
+    display: block;
+}
