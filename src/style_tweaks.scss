@@ -1,5 +1,5 @@
 /* remove fixation on 1536px width */
-#react_root .folderbar-wrapper, #topbar, .main-content #content-holder, .main-content .questions-and-answers #qanda-content > div {
+#react_root .folderbar-wrapper, #topbar, .main-content #content-holder:has(#react_feed), .main-content .questions-and-answers #qanda-content > div {
     max-width: none;
 }
 
