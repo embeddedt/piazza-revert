@@ -122,12 +122,11 @@ html[data-darkreader-scheme="dark"] {
     background: none;
 }
 
-.main-content .questions-and-answers #qanda-content article[data-id="i_answer"], .main-content .questions-and-answers #qanda-content article[data-id="s_answer"]  {
+.main-content .questions-and-answers #qanda-content article[data-id="i_answer"], .main-content .questions-and-answers #qanda-content article[data-id="s_answer"], #qaContentViewId {
     background-color: #ffffff;
-}
-
-[data-darkreader-scheme="dark"] .main-content .questions-and-answers #qanda-content article[data-id="i_answer"], [data-darkreader-scheme="dark"] .main-content .questions-and-answers #qanda-content article[data-id="s_answer"] {
-    background-color: #181a1b;
+    [data-darkreader-scheme="dark"] & {
+        background-color: #181a1b;
+    }
 }
 
 .main-content .questions-and-answers #qanda-content article#qaContentViewId {
