@@ -22,6 +22,9 @@
 #react_feed #feed_list_wrapper #feed_list ul li.feed_item .content .snippet {
     font-family: "Lucida Grande",Lucida,Tahoma,Verdana,Arial,sans-serif;
     color: #666;
+    body.dark-mode & {
+        color: #999;
+    }
 }
 
 #feed_search_bar {
@@ -61,7 +64,7 @@
     --qa-article-border-color: #cccccc;
 }
 
-html[data-darkreader-scheme="dark"] {
+body.dark-mode {
     --qa-section-border-color: #383d3f;
     --qa-footer-background-color: #222526;
     --qa-followup-background-color: #1d1f20;
@@ -70,20 +73,11 @@ html[data-darkreader-scheme="dark"] {
     --qa-article-border-color: #3e4446;
 }
 
-.main-content .questions-and-answers {
-    background-color: #eaeef4;
-}
-
-[data-darkreader-scheme="dark"] .main-content .questions-and-answers {
-    background-color: #212425;
-}
-
-[data-darkreader-scheme="dark"] #react_feed #feed_list_wrapper #feed_list ul li.feed_item .content .snippet {
-    color: #a8a095;
-}
-
-[data-darkreader-scheme="dark"] #react_feed #feed_list_wrapper #feed_list ul li.feed_item.selected {
-    background-color: #3c3200;
+#react_feed #feed_list_wrapper #feed_list ul li.feed_item.selected {
+    background-color: #fff6c6;
+    body.dark-mode & {
+        background-color: #3c3200;
+    }
 }
 
 #react_feed #feed_list_wrapper #feed_list ul li.feed_item .feed_item_dropdown_selector {
@@ -124,7 +118,7 @@ html[data-darkreader-scheme="dark"] {
 
 .main-content .questions-and-answers #qanda-content article[data-id="i_answer"], .main-content .questions-and-answers #qanda-content article[data-id="s_answer"], #qaContentViewId {
     background-color: #ffffff;
-    [data-darkreader-scheme="dark"] & {
+    body.dark-mode & {
         background-color: #181a1b;
     }
 }
@@ -315,15 +309,6 @@ article.followup_container .followup .followup_content_wrapper > .border-left {
 /* render a background behind transparent images (e.g. with handwriting) */
 body .render-html-content img, img.pswp__img {
     background-color: white;
-}
-
-html[data-darkreader-scheme="dark"] #react_root .folder_selector .folder_button {
-    background-color: #2F363C;
-}
-
-/* fix the dropdowns having excessively bright background colors */
-html[data-darkreader-scheme="dark"] .dropdown .dropdown-menu .dropdown-item:hover {
-    background: #223;
 }
 
 .us-image-hover-preview-container {
