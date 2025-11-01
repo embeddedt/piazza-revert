@@ -1,7 +1,8 @@
-import { heicTo } from "heic-to";
 import { userscriptSettings } from '../utils/settings';
+import { loadHeic } from './heic_bootstrap';
 
 const convertedImageTypes = new Set(["jpeg","jpg","png","heic"]);
+
 
 function processAnchor(anchor) {
   if (!userscriptSettings.get("heicImageDecoding")) {
@@ -28,15 +29,19 @@ function processAnchor(anchor) {
     // provide native support for them.
     console.log("Trying to decode HEIC", href);
 
+    const heicPromise = loadHeic();
+
     GM_xmlhttpRequest({
       method: "GET",
       url: href,
       responseType: "arraybuffer",
       redirect: 'follow',
-      onload: function (res) {
+      onload: async function (res) {
         const blob = new Blob([res.response], { type: "image/heic" });
 
-        heicTo({ blob, type: "image/jpeg" })
+        await heicPromise;
+
+        unsafeWindow.HeicTo({ blob, type: "image/jpeg" })
           .then((result) => {
             const imgBlob = Array.isArray(result) ? result[0] : result;
             const url = URL.createObjectURL(imgBlob);

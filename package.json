@@ -28,7 +28,6 @@
   },
   "dependencies": {
     "@types/tampermonkey": "^5.0.4",
-    "heic-to": "^1.3.0",
     "photoswipe": "^5.4.4"
   }
 }
