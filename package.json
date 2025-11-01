@@ -27,7 +27,6 @@
     "webpack-userscript": "^3.2.3"
   },
   "dependencies": {
-    "@types/tampermonkey": "^5.0.4",
-    "photoswipe": "^5.4.4"
+    "@types/tampermonkey": "^5.0.4"
   }
 }

@@ -1,5 +1,5 @@
+import { loadPackage } from '../utils/cdn_bootstrap';
 import { userscriptSettings } from '../utils/settings';
-import { loadHeic } from './heic_bootstrap';
 
 const convertedImageTypes = new Set(["jpeg","jpg","png","heic"]);
 
@@ -29,7 +29,7 @@ function processAnchor(anchor) {
     // provide native support for them.
     console.log("Trying to decode HEIC", href);
 
-    const heicPromise = loadHeic();
+    const heicPromise = loadPackage("https://cdn.jsdelivr.net/npm/heic-to@1.3.0/dist/iife/heic-to.js");
 
     GM_xmlhttpRequest({
       method: "GET",
