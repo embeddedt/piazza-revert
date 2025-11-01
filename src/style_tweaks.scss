@@ -300,7 +300,7 @@ article.followup_container .followup .followup_content_wrapper > .border-left {
 .us-feature-smallerImagesInPosts {
     /* shrink images by default until clicked */
     body .render-html-content img {
-        max-width: 150px;
+        max-width: 300px;
         height: auto;
         cursor: pointer;
     }
