@@ -12,10 +12,12 @@ export default {
     filename: 'revert.js'
   },
   devServer: {
+    webSocketServer: false,
     static: {
       directory: path.join(path.dirname(fileURLToPath(import.meta.url)), 'dist')
     }
   },
+  devtool: false,
   module: {
     rules: [
       {
