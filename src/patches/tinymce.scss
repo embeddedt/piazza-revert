@@ -1,0 +1,5 @@
+/* fix blockquote style being nonexistent on Piazza */
+.mce-content-body:not([dir=rtl]) blockquote {
+    border-left: 2px solid #6d737b;
+    padding-left: 1rem;
+}

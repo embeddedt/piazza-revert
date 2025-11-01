@@ -1,7 +1,15 @@
+import tinymceCss from './tinymce.scss';
 
 if (typeof unsafeWindow.tinymce !== 'undefined') {
     // We manually implement resizing logic for TinyMCE. For some reason the default
     // logic does not work with Piazza's setup.
+
+    function applyStyles(editor) {
+        const doc = editor.getDoc();
+        const style = doc.createElement('style');
+        style.textContent = tinymceCss;
+        doc.head.appendChild(style);
+    }
 
     const resizeHandleClass = "tox-statusbar__resize-handle";
     tinymce.on('AddEditor', e => {
@@ -9,6 +17,8 @@ if (typeof unsafeWindow.tinymce !== 'undefined') {
 
         // wait until the editor DOM is ready
         editor.on('init', () => {
+            applyStyles(editor);
+
             const container = editor.getContainer();
             if (!container) {
                 console.warn("editor container does not exist");
