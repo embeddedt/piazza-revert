@@ -197,13 +197,8 @@ article.answer > .content {
 }
 
 article.answer button.btn-ghost, .main-content .questions-and-answers #qanda-content .post-footer button.btn-ghost {
-    background-color: #1370c4;
     color: #fff;
     align-items: center;
-}
-
-article.answer button.btn-ghost:hover:not(:disabled), .main-content .questions-and-answers #qanda-content .post-footer button.btn-ghost:hover:not(:disabled) {
-    background-color: #0f5391;
 }
 
 article.answer button.btn-ghost > svg, .main-content .questions-and-answers #qanda-content .post-footer button.btn-ghost > svg {
