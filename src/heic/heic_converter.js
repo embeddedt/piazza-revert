@@ -5,22 +5,32 @@ const convertedImageTypes = new Set(["jpeg","jpg","png","heic"]);
 
 
 function processAnchor(anchor) {
-  if (!userscriptSettings.get("heicImageDecoding")) {
-    return;
-  }
-
   const href = anchor.getAttribute("href");
 
   if (!href) return;
 
   const text = anchor.textContent.trim();
+
+  const textExtension = text.toLowerCase().substring(text.lastIndexOf('.') + 1);
+  if (!convertedImageTypes.has(textExtension)) {
+    return;
+  }
+
+  processElement(anchor, href, text);
+}
+
+function processImage(img) {
+  const href = img.src;
+
+  if (!href) return;
+
+  processElement(img, href);
+}
+
+function processElement(anchor, href, text) {
   const normalizedHref = href.toLowerCase();
   const extension = normalizedHref.substring(normalizedHref.lastIndexOf('.') + 1);
   if (!convertedImageTypes.has(extension)) {
-    return;
-  }
-  const textExtension = text.toLowerCase().substring(text.lastIndexOf('.') + 1);
-  if (!convertedImageTypes.has(textExtension)) {
     return;
   }
 
@@ -48,7 +58,7 @@ function processAnchor(anchor) {
 
             const img = document.createElement("img");
             img.src = url;
-            img.alt = text;
+            img.alt = text ?? "";
 
             anchor.replaceWith(img);
           })
@@ -60,7 +70,7 @@ function processAnchor(anchor) {
         console.error("Failed to fetch HEIC:", err);
       },
     });
-  } else {
+  } else if (anchor.tagName !== 'IMG') {
     // Do a straight replacement with the desired img
     const img = document.createElement("img");
     img.src = href;
@@ -71,13 +81,17 @@ function processAnchor(anchor) {
 }
 
 const observer = new MutationObserver(mutations => {
+  if (!userscriptSettings.get("heicImageDecoding")) {
+    return;
+  }
   for (const mutation of mutations) {
     for (const node of mutation.addedNodes) {
       if (node.nodeType === Node.ELEMENT_NODE) {
-        if (node.tagName === "A") {
+        if (node.tagName === "A" || node.tagName === "IMG") {
           processAnchor(node);
         } else {
           node.querySelectorAll?.("a").forEach(processAnchor);
+          node.querySelectorAll?.("img").forEach(processImage);
         }
       }
     }
@@ -86,4 +100,7 @@ const observer = new MutationObserver(mutations => {
 
 observer.observe(document.body, { childList: true, subtree: true });
 
-document.querySelectorAll("a").forEach(processAnchor);
+if (userscriptSettings.get("heicImageDecoding")) {
+  document.querySelectorAll("a").forEach(processAnchor);
+  document.querySelectorAll("img").forEach(processImage);
+}
