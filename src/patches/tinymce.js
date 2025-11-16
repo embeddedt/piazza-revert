@@ -12,7 +12,7 @@ if (typeof unsafeWindow.tinymce !== 'undefined') {
     }
 
     const resizeHandleClass = "tox-statusbar__resize-handle";
-    tinymce.on('AddEditor', e => {
+    unsafeWindow.tinymce.on('AddEditor', e => {
         const editor = e.editor;
 
         // wait until the editor DOM is ready
