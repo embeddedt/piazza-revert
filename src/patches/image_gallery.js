@@ -38,7 +38,7 @@ function injectImageHover() {
 
     document.addEventListener("mouseover", e => {
         const img = e.target.closest(imagesToMakeInteractive);
-        if (!img) return;
+        if (!img || !img.complete || img.naturalWidth == 0) return;
 
         // Start delay timer
         hoverTimer = setTimeout(() => {
