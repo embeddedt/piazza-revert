@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Piazza Revert
 // @description Revert Piazza to the old user interface
-// @version 0.5.0-build.2025-11-03T03:06:55.065Z
+// @version 0.5.0-build.2025-11-16T22:24:35.643Z
 // @author embeddedt
 // @homepage https://github.com/embeddedt/piazza-revert
 // @supportURL https://github.com/embeddedt/piazza-revert/issues
