@@ -20,6 +20,11 @@ function processAnchor(anchor) {
 }
 
 function processImage(img) {
+  // Only replace images in Piazza render
+  if (img.closest('.render-html-content') == null) {
+    return;
+  }
+
   const href = img.src;
 
   if (!href) return;
